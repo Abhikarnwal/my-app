@@ -2,13 +2,14 @@ import React from "react";
 import "./Navbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
+import { ThemeContext } from "../../Contexts/ThemeContext";
 
 export default function Navbar() {
-
-  const { isAuth, toggleAuth }= useContext(AuthContext)
+  const { isAuth, toggleAuth } = useContext(AuthContext);
+  const { themeStyle, toggleTheme, theme } = useContext(ThemeContext);
 
   return (
-    <div className="navbar">
+    <div className="navbar" style={themeStyle}>
       <div className="navbar-logo">
         <img
           src="https://www.mockplus.com/enUS/images/nav/logo-red-black.png"
@@ -27,9 +28,22 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-login">
-       {isAuth ? <button onClick={()=>{toggleAuth(false)}} >LogOut</button> :<button>Login</button> }
+        {isAuth ? (
+          <button
+            onClick={() => {
+              toggleAuth(false);
+            }}
+          >
+            LogOut
+          </button>
+        ) : (
+          <button>Login</button>
+        )}
 
-        {isAuth ? " ": <button>Get Started For free</button>}
+        <button onClick={toggleTheme}>
+          {" "}
+          {theme === "light"  ? "Enable Dark Mode" : "Enable Light Mode " }{" "}
+        </button>
       </div>
     </div>
   );

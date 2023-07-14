@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../Contexts/ThemeContext";
 
 export default function Home() {
+
+  const {themeStyle}= useContext(ThemeContext)
   return (
-    <div>
+    <div  style={themeStyle} >
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
         cupiditate, illo reprehenderit voluptates provident minus autem vero

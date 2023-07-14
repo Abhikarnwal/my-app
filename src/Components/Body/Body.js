@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import "./Body.css";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
+import { ThemeContext } from "../../Contexts/ThemeContext";
 
+ 
 export default function Body() {
+  const {themeStyle}=useContext(ThemeContext)
 
   const { login ,toggleAuth } =useContext(AuthContext)
 
@@ -38,8 +41,8 @@ export default function Body() {
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
+    <div className="login-container" >
+      <form className="login-form" onSubmit={handleSubmit}  style={themeStyle}>
         <h2>Login</h2>
         <label>
           Username :

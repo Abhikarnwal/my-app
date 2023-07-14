@@ -4,12 +4,14 @@ import Body from "./Components/Body/Body";
 import Navbar from "./Components/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "./Contexts/AuthContext";
+import { ThemeContext } from "./Contexts/ThemeContext";
 
 function App() {
  
   const {isAuth} =useContext(AuthContext)
+  
   return (
-    <div className="App">
+    <div className="App" >
       <Navbar />
 
       { isAuth ?   <Home /> : <Body /> }
